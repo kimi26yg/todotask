@@ -1,0 +1,84 @@
+/* UpDown.css */
+
+.updown-main {
+  display: flex;
+  flex-direction: column; /* 세로로 쌓기 */
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+.count-display {
+  font-size: 14px;
+  color: #888;
+  font-weight: bold;
+}
+
+.user-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 18px;
+  text-align: center;
+  box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.user-input:focus {
+  border-color: #4a90e2;
+}
+
+/* 버튼들을 가로로 나란히 */
+.button-group {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.button-group button {
+  flex: 1; /* 두 버튼의 너비를 동일하게 */
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition:
+    transform 0.1s,
+    opacity 0.2s;
+}
+
+/* 제출 버튼: 파란색 */
+.submit-btn {
+  background-color: #3498db;
+}
+
+/* 리셋 버튼: 오렌지색 */
+.reset-btn {
+  background-color: #e67e22;
+}
+
+.button-group button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.button-group button:active {
+  transform: translateY(0);
+}
+
+#result {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #e74c3c;
+  text-align: center;
+}
+
+#result.correct {
+  color: #2ecc71;
+  transform: scale(1.1);
+}
