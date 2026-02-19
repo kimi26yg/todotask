@@ -7,18 +7,19 @@
   justify-content: center;
   gap: 2rem;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
   width: 100%;
   max-width: 400px;
   margin: 2rem auto;
-  border-radius: 12px;
+  /* border-radius removed globally */
 }
 
 .count {
   font-size: 6rem;
   margin: 0;
-  color: var(--color-white);
+  color: var(--color-white, #fff);
   font-weight: 800;
   transition: all 0.3s ease;
   line-height: 1;
@@ -29,7 +30,7 @@
 }
 
 .negative {
-  color: #ff4757;
+  color: var(--color-red);
 }
 
 .buttons {
@@ -45,9 +46,9 @@
   font-size: 1.5rem;
   cursor: pointer;
   border: none;
-  border-radius: 8px;
+  /* border-radius removed globally */
   background-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-white);
+  color: var(--color-white, #fff);
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
@@ -66,7 +67,7 @@
 /* Specific button colors for better UX */
 .button:nth-child(1) { /* Minus */
   background-color: rgba(255, 71, 87, 0.2);
-  color: #ff4757;
+  color: var(--color-red);
 }
 .button:nth-child(1):hover:not(:disabled) {
   background-color: rgba(255, 71, 87, 0.3);

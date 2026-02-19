@@ -7,6 +7,16 @@
   --color-text-muted-dark: #A1A1AA;
   --color-text-dim-dark: #71717A;
   
+  /* Additional Colors */
+  --color-red: #FF4757;
+  --color-blue: #3498db;
+  --color-orange: #e67e22;
+
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
   /* Light Mode Colors */
   --color-bg-light: #F5F5F5;
   --color-text-light: #1A1A1A;
@@ -28,6 +38,10 @@ body.light {
   --color-text: var(--color-text-light);
   --color-text-muted: var(--color-text-muted-light);
   --color-text-dim: var(--color-text-dim-light);
+  
+  /* In light mode, glass effect might need adjustment or different values */
+  --glass-bg: rgba(0, 0, 0, 0.05);
+  --glass-border: rgba(0, 0, 0, 0.1);
 }
 
 /* Global Reset */
@@ -35,6 +49,8 @@ body.light {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Global Border Radius Reset */
+  border-radius: 0 !important; 
 }
 
 body {
@@ -46,7 +62,7 @@ body {
   min-height: 100vh;
 }
 
-/* Global Container Utility (optional, can be kept if needed for simple layout) */
+/* Global Container Utility (optional) */
 .container {
   width: 100%;
   max-width: 1200px;

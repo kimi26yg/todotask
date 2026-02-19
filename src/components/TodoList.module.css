@@ -147,10 +147,10 @@
 .inputBox .addBtn {
   width: 56px;
   height: 56px;
-  background: var(--color-lime);
-  color: var(--color-black);
-  border: none;
-  border-radius: 2px;
+  background: transparent;
+  border: 1px solid var(--color-lime);
+  color: var(--color-lime);
+  /* border-radius removed globally */
   font-size: 28px;
   font-weight: 300;
   cursor: pointer;
@@ -161,8 +161,9 @@
 }
 
 .inputBox .addBtn:hover {
+  background: rgba(226, 255, 71, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(226, 255, 71, 0.3);
+  box-shadow: 0 0 15px rgba(226, 255, 71, 0.3);
 }
 
 .inputBox .addBtn:active {

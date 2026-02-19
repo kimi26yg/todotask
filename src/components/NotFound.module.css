@@ -34,15 +34,17 @@
 .homeBtn {
   display: inline-block;
   padding: 12px 24px;
-  background-color: var(--color-lime);
-  color: var(--color-black);
+  background-color: transparent;
+  border: 1px solid var(--color-lime);
+  color: var(--color-lime);
   text-decoration: none;
-  border-radius: 4px;
+  /* border-radius removed globally */
   font-weight: 600;
   transition: all 0.2s ease;
 }
 
 .homeBtn:hover {
+  background-color: rgba(226, 255, 71, 0.1); /* Subtle hover fill */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(226, 255, 71, 0.3);
+  box-shadow: 0 0 15px rgba(226, 255, 71, 0.3);
 }
