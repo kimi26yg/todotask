@@ -1,62 +1,61 @@
 /* Counter.module.css */
 
-/* 전체 컨테이너 설정 */
 .counter {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  margin: 50px auto;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #333; /* Ensure text color is set locally if needed */
-  border-radius: 8px; /* Optional UI polish */
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+  border-radius: 12px;
 }
 
-/* 숫자 표시 부분 */
 .count {
-  font-size: 5rem;
+  font-size: 6rem;
   margin: 0;
-  color: #333;
-  font-weight: bold;
+  color: var(--color-white);
+  font-weight: 800;
   transition: all 0.3s ease;
+  line-height: 1;
 }
 
 .positive {
-  color: oklch(41.579% 0.21256 279.237);
+  color: var(--color-lime);
 }
 
 .negative {
-  color: oklch(57.714% 0.20981 26.883);
+  color: #ff4757;
 }
 
-/* 버튼 그룹 레이아웃 */
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   align-items: center;
+  width: 100%;
 }
 
-/* 공통 버튼 스타일 - Changed from 'button' tag to class */
 .button {
-  padding: 10px 20px;
-  font-size: 1.2rem;
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  transition:
-    background-color 0.2s,
-    transform 0.1s;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
@@ -64,18 +63,33 @@
   transform: translateY(0);
 }
 
-/* 리셋 버튼은 빨간색으로 포인트 - nth-child used on the class */
-.button:nth-child(2) {
-  background-color: #6c757d;
+/* Specific button colors for better UX */
+.button:nth-child(1) { /* Minus */
+  background-color: rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+}
+.button:nth-child(1):hover:not(:disabled) {
+  background-color: rgba(255, 71, 87, 0.3);
 }
 
-.button:nth-child(2):hover {
-  background-color: #5a6268;
+.button:nth-child(2) { /* Reset */
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
 }
 
-/* 비활성화(Disabled) 상태 스타일 */
+.button:nth-child(3) { /* Plus */
+  background-color: rgba(226, 255, 71, 0.2);
+  color: var(--color-lime);
+}
+.button:nth-child(3):hover:not(:disabled) {
+  background-color: rgba(226, 255, 71, 0.3);
+}
+
+
 .button:disabled {
-  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-dim);
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.5;
 }
