@@ -1,3 +1,5 @@
+/* Counter.module.css */
+
 /* 전체 컨테이너 설정 */
 .counter {
   display: flex;
@@ -7,11 +9,12 @@
   gap: 2rem;
   padding: 2rem;
   background-color: #f8f9fa;
-  border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 300px;
   margin: 50px auto;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333; /* Ensure text color is set locally if needed */
+  border-radius: 8px; /* Optional UI polish */
 }
 
 /* 숫자 표시 부분 */
@@ -38,13 +41,13 @@
   align-items: center;
 }
 
-/* 공통 버튼 스타일 */
-button {
+/* 공통 버튼 스타일 - Changed from 'button' tag to class */
+.button {
   padding: 10px 20px;
   font-size: 1.2rem;
   cursor: pointer;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: #007bff;
   color: white;
   transition:
@@ -52,26 +55,26 @@ button {
     transform 0.1s;
 }
 
-button:hover:not(:disabled) {
+.button:hover:not(:disabled) {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
 
-button:active:not(:disabled) {
+.button:active:not(:disabled) {
   transform: translateY(0);
 }
 
-/* 리셋 버튼은 빨간색으로 포인트 */
-button:nth-child(2) {
+/* 리셋 버튼은 빨간색으로 포인트 - nth-child used on the class */
+.button:nth-child(2) {
   background-color: #6c757d;
 }
 
-button:nth-child(2):hover {
+.button:nth-child(2):hover {
   background-color: #5a6268;
 }
 
-/* 비활성화(Disabled) 상태 스타일 (max/min 도달 시) */
-button:disabled {
+/* 비활성화(Disabled) 상태 스타일 */
+.button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
   opacity: 0.6;

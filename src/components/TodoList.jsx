@@ -1,4 +1,4 @@
-import "./TodoList.css";
+import styles from "./TodoList.module.css";
 import { useEffect, useState } from "react";
 
 const todoList = [
@@ -11,21 +11,21 @@ const todoList = [
 
 function TodoItem({ todo, onToggle, onDelete }) {
   return (
-    <li className={todo.isDone ? "completed" : ""}>
+    <li className={todo.isDone ? styles.completed : ""}>
       <input
         type="checkbox"
         checked={todo.isDone}
         onChange={() => onToggle(todo.id)}
       />
       <span>{todo.task}</span>
-      <button className="delete-btn" onClick={() => onDelete(todo.id)}>
+      <button className={styles.deleteBtn} onClick={() => onDelete(todo.id)}>
         ✖
       </button>
     </li>
   );
 }
 
-function TodoList() {
+function TodoList({ isDarkMode }) {
   const [todos, setTodos] = useState(() => {
     const saved = localStorage.getItem("todos");
     return saved ? JSON.parse(saved) : [];
@@ -33,7 +33,6 @@ function TodoList() {
 
   const [todoValue, setTodoValue] = useState("");
   const [filter, setFilter] = useState("all"); // all, active, completed
-  const [isDarkMode, setIsDarkMode] = useState(true); // 다크모드 기본값
 
   // 남은 할 일 개수 계산
   const remainingCount = todos.filter((todo) => !todo.isDone).length;
@@ -88,37 +87,23 @@ function TodoList() {
     day: "numeric",
   });
 
-  // 테마 토글 함수
-  function toggleTheme() {
-    setIsDarkMode(!isDarkMode);
-  }
-
   return (
-    <div className={`container ${isDarkMode ? "dark" : "light"}`}>
-      <header className="header">
-        <div className="header-top">
+    <div
+      className={`${styles.container} ${isDarkMode ? styles.dark : styles.light}`}
+    >
+      <header className={styles.header}>
+        <div className={styles.headerTop}>
           <h1>{today}</h1>
-          <div className="header-right">
-            <button
-              className="theme-toggle"
-              onClick={toggleTheme}
-              title={
-                isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
-              }
-            >
-              <span className="theme-label">
-                {isDarkMode ? "DARK" : "LIGHT"}
-              </span>
-            </button>
-            <div className="remaining-count">
-              <span className="count">{remainingCount}</span>
-              <span className="label">tasks left</span>
+          <div className={styles.headerRight}>
+            <div className={styles.remainingCount}>
+              <span className={styles.count}>{remainingCount}</span>
+              <span className={styles.label}>tasks left</span>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="input-box">
+      <div className={styles.inputBox}>
         <input
           type="text"
           placeholder="Add a new task..."
@@ -130,52 +115,55 @@ function TodoList() {
             }
           }}
         />
-        <button className="add-btn" onClick={addTodo}>
+        <button className={styles.addBtn} onClick={addTodo}>
           +
         </button>
       </div>
 
-      <div className="controls">
-        <div className="filter-controls">
+      <div className={styles.controls}>
+        <div className={styles.filterControls}>
           <button
-            className={`filter-dot ${filter === "all" ? "active" : ""}`}
+            className={`${styles.filterDot} ${filter === "all" ? styles.active : ""}`}
             onClick={() => setFilter("all")}
             title="All"
           >
-            <span className="dot"></span>
+            <span className={styles.dot}></span>
           </button>
           <button
-            className={`filter-dot ${filter === "active" ? "active" : ""}`}
+            className={`${styles.filterDot} ${filter === "active" ? styles.active : ""}`}
             onClick={() => setFilter("active")}
             title="Active"
           >
-            <span className="dot"></span>
+            <span className={styles.dot}></span>
           </button>
           <button
-            className={`filter-dot ${filter === "completed" ? "active" : ""}`}
+            className={`${styles.filterDot} ${filter === "completed" ? styles.active : ""}`}
             onClick={() => setFilter("completed")}
             title="Completed"
           >
-            <span className="dot"></span>
+            <span className={styles.dot}></span>
           </button>
         </div>
 
-        <div className="action-buttons">
-          <button className="action-btn" onClick={deleteCompletedTodos}>
+        <div className={styles.actionButtons}>
+          <button className={styles.actionBtn} onClick={deleteCompletedTodos}>
             Clear Completed
           </button>
-          <button className="action-btn danger" onClick={deleteAllTodos}>
+          <button
+            className={`${styles.actionBtn} ${styles.danger}`}
+            onClick={deleteAllTodos}
+          >
             Clear All
           </button>
         </div>
       </div>
 
       {filteredTodos.length === 0 ? (
-        <div className="empty-state">
+        <div className={styles.emptyState}>
           <p>No tasks. Enjoy your coffee.</p>
         </div>
       ) : (
-        <ul className="todo-list">
+        <ul className={styles.todoList}>
           {filteredTodos.map((todo) => (
             <TodoItem
               key={todo.id}

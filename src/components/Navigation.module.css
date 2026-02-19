@@ -1,0 +1,73 @@
+/* Navigation.module.css */
+
+.nav {
+  display: flex;
+  font-weight: 500;
+  gap: 20px;
+  background-color: #2c2c2c;
+  padding: 1rem 2rem;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  align-items: center; /* Center items vertically */
+  position: relative; /* Context for nested positioning if needed */
+}
+
+/* Nav links container - to keep links on the left and toggle on the right */
+.links {
+  display: flex;
+  gap: 20px;
+  flex: 1; /* Pushes toggle to the right */
+}
+
+.nav a {
+  text-decoration: none;
+  color: #bdc3c7;
+  font-weight: 100;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+}
+
+/* Hover state */
+.nav a:hover {
+  color: #8b8b8b;
+}
+
+/* Active menu */
+.nav a:global(.active) {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Theme Toggle Button Styles */
+.themeToggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px; /* Slightly more rounded */
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto; /* Push to right if not using flex-1 on container */
+}
+
+.themeToggle .themeLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #bdc3c7; /* Match nav text */
+  transition: all 0.2s ease;
+}
+
+.themeToggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-lime, #E2FF47);
+}
+
+.themeToggle:hover .themeLabel {
+  color: var(--color-lime, #E2FF47);
+}

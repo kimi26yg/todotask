@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Counter.css";
+import styles from "./Counter.module.css";
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -19,20 +19,32 @@ function Counter() {
   };
 
   return (
-    <div className="counter">
+    <div className={styles.counter}>
       <h1
-        className={`count ${count > 0 ? "positive" : count < 0 ? "negative" : ""}`}
+        className={`${styles.count} ${count > 0 ? styles.positive : count < 0 ? styles.negative : ""}`}
       >
         {count}
       </h1>
-      <div className="buttons">
-        <button onClick={minusCount} disabled={count <= min}>
+      <div className={styles.buttons}>
+        <button
+          className={styles.button}
+          onClick={minusCount}
+          disabled={count <= min}
+        >
           -
         </button>
-        <button onClick={resetCount} disabled={count == 0}>
+        <button
+          className={styles.button}
+          onClick={resetCount}
+          disabled={count == 0}
+        >
           Reset
         </button>
-        <button onClick={addCount} disabled={count >= max}>
+        <button
+          className={styles.button}
+          onClick={addCount}
+          disabled={count >= max}
+        >
           +
         </button>
       </div>

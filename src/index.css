@@ -1,0 +1,55 @@
+:root {
+  /* Dark Mode Colors (Default) */
+  --color-bg-dark: #0A0A0B;
+  --color-text-dark: #FFFFFF;
+  --color-lime: #E2FF47;
+  --color-zinc: #27272A;
+  --color-text-muted-dark: #A1A1AA;
+  --color-text-dim-dark: #71717A;
+  
+  /* Light Mode Colors */
+  --color-bg-light: #F5F5F5;
+  --color-text-light: #1A1A1A;
+  --color-light-card: #FFFFFF;
+  --color-text-muted-light: #6B6B6B;
+  --color-text-dim-light: #9CA3AF;
+  --color-light-border: #E5E7EB;
+
+  /* Current Theme Variables - Default to Dark */
+  --color-bg: var(--color-bg-dark);
+  --color-text: var(--color-text-dark);
+  --color-text-muted: var(--color-text-muted-dark);
+  --color-text-dim: var(--color-text-dim-dark);
+}
+
+/* Light Mode Overrides */
+body.light {
+  --color-bg: var(--color-bg-light);
+  --color-text: var(--color-text-light);
+  --color-text-muted: var(--color-text-muted-light);
+  --color-text-dim: var(--color-text-dim-light);
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Global Container Utility (optional, can be kept if needed for simple layout) */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

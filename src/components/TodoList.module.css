@@ -1,39 +1,5 @@
 /* ===== Design System ===== */
-:root {
-  /* Dark Mode Colors */
-  --color-black: #0A0A0B;
-  --color-lime: #E2FF47;
-  --color-zinc: #27272A;
-  --color-text: #FFFFFF;
-  --color-text-muted: #A1A1AA;
-  --color-text-dim: #71717A;
-  
-  /* Light Mode Colors */
-  --color-white: #FFFFFF;
-  --color-light-bg: #F5F5F5;
-  --color-light-card: #FFFFFF;
-  --color-light-text: #1A1A1A;
-  --color-light-text-muted: #6B6B6B;
-  --color-light-text-dim: #9CA3AF;
-  --color-light-border: #E5E7EB;
-}
-
-/* ===== Global Reset ===== */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--color-black);
-  color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-  letter-spacing: -0.01em;
-  transition: background 0.3s ease;
-}
-
-body:has(.container.light) {
-  background: var(--color-light-bg);
-}
+/* Variables are now in index.css */
 
 /* ===== Container ===== */
 .container {
@@ -41,54 +7,61 @@ body:has(.container.light) {
   margin: 64px auto 40px;
   padding: 0 24px;
   transition: all 0.3s ease;
+  /* Default dark mode text colors if not inherited */
+  color: var(--color-text);
 }
 
 /* ===== Theme Styles ===== */
+/* When container has 'light' class */
 .container.light {
   --color-text: var(--color-light-text);
   --color-text-muted: var(--color-light-text-muted);
   --color-text-dim: var(--color-light-text-dim);
+  
+  background-color: var(--color-light-bg);
+  border-radius: 8px; /* Optional, makes it look contained */
 }
 
-.container.light .input-box input {
+/* Be specific about light mode overrides */
+.container.light .inputBox input {
   background: var(--color-light-card);
   color: var(--color-light-text);
   border: 1px solid var(--color-light-border);
 }
 
-.container.light .input-box input::placeholder {
+.container.light .inputBox input::placeholder {
   color: var(--color-light-text-dim);
 }
 
-.container.light .todo-list li {
+.container.light .todoList li {
   background: var(--color-light-card);
   border: 1px solid var(--color-light-border);
 }
 
-.container.light .todo-list li:hover {
+.container.light .todoList li:hover {
   background: var(--color-light-bg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.container.light .action-btn {
+.container.light .actionBtn {
   border-color: var(--color-light-border);
   color: var(--color-light-text-muted);
 }
 
-.container.light .action-btn:hover {
+.container.light .actionBtn:hover {
   background: var(--color-light-bg);
   color: var(--color-light-text);
 }
 
-.container.light .filter-dot .dot {
+.container.light .filterDot .dot {
   background: var(--color-light-text-dim);
 }
 
-.container.light .filter-dot:hover .dot {
+.container.light .filterDot:hover .dot {
   background: var(--color-light-text-muted);
 }
 
-.container.light .empty-state p {
+.container.light .emptyState p {
   color: var(--color-light-text-dim);
 }
 
@@ -97,7 +70,7 @@ body:has(.container.light) {
   margin-bottom: 48px;
 }
 
-.header-top {
+.headerTop {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -112,67 +85,20 @@ body:has(.container.light) {
   color: var(--color-text);
 }
 
-.header-right {
+.headerRight {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.theme-toggle {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 2px;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.theme-toggle .theme-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  transition: all 0.2s ease;
-}
-
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--color-lime);
-}
-
-.theme-toggle:hover .theme-label {
-  color: var(--color-lime);
-}
-
-.container.light .theme-toggle {
-  border: 1px solid var(--color-light-border);
-}
-
-.container.light .theme-toggle .theme-label {
-  color: var(--color-light-text-muted);
-}
-
-.container.light .theme-toggle:hover {
-  background: var(--color-light-bg);
-  border-color: var(--color-lime);
-}
-
-.container.light .theme-toggle:hover .theme-label {
-  color: var(--color-lime);
-}
-
-.remaining-count {
+.remainingCount {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 2px;
 }
 
-.remaining-count .count {
+.remainingCount .count {
   font-size: 40px;
   font-weight: 700;
   color: var(--color-lime);
@@ -180,7 +106,7 @@ body:has(.container.light) {
   letter-spacing: -0.03em;
 }
 
-.remaining-count .label {
+.remainingCount .label {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -189,13 +115,13 @@ body:has(.container.light) {
 }
 
 /* ===== Input Box ===== */
-.input-box {
+.inputBox {
   display: flex;
   gap: 12px;
   margin-bottom: 32px;
 }
 
-.input-box input {
+.inputBox input {
   flex: 1;
   padding: 16px 20px;
   background: rgba(39, 39, 42, 0.6);
@@ -208,17 +134,17 @@ body:has(.container.light) {
   transition: all 0.2s ease;
 }
 
-.input-box input::placeholder {
+.inputBox input::placeholder {
   color: var(--color-text-dim);
 }
 
-.input-box input:focus {
+.inputBox input:focus {
   outline: none;
   background: rgba(39, 39, 42, 0.8);
   border-bottom-color: var(--color-lime);
 }
 
-.input-box .add-btn {
+.inputBox .addBtn {
   width: 56px;
   height: 56px;
   background: var(--color-lime);
@@ -234,12 +160,12 @@ body:has(.container.light) {
   justify-content: center;
 }
 
-.input-box .add-btn:hover {
+.inputBox .addBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(226, 255, 71, 0.3);
 }
 
-.input-box .add-btn:active {
+.inputBox .addBtn:active {
   transform: translateY(0);
 }
 
@@ -253,13 +179,13 @@ body:has(.container.light) {
 }
 
 /* Filter Controls (Minimalist Dots) */
-.filter-controls {
+.filterControls {
   display: flex;
   gap: 16px;
   align-items: center;
 }
 
-.filter-dot {
+.filterDot {
   background: none;
   border: none;
   padding: 8px;
@@ -267,7 +193,7 @@ body:has(.container.light) {
   transition: all 0.2s ease;
 }
 
-.filter-dot .dot {
+.filterDot .dot {
   display: block;
   width: 8px;
   height: 8px;
@@ -276,23 +202,23 @@ body:has(.container.light) {
   transition: all 0.2s ease;
 }
 
-.filter-dot:hover .dot {
+.filterDot:hover .dot {
   background: var(--color-text-muted);
   transform: scale(1.3);
 }
 
-.filter-dot.active .dot {
+.filterDot.active .dot {
   background: var(--color-lime);
   transform: scale(1.5);
 }
 
 /* Action Buttons */
-.action-buttons {
+.actionButtons {
   display: flex;
   gap: 8px;
 }
 
-.action-btn {
+.actionBtn {
   padding: 8px 16px;
   background: transparent;
   color: var(--color-text-muted);
@@ -306,20 +232,20 @@ body:has(.container.light) {
   font-weight: 500;
 }
 
-.action-btn:hover {
+.actionBtn:hover {
   background: var(--color-zinc);
   color: var(--color-text);
   border-color: var(--color-text-dim);
 }
 
-.action-btn.danger:hover {
+.actionBtn.danger:hover {
   background: rgba(239, 68, 68, 0.1);
   color: #EF4444;
   border-color: #EF4444;
 }
 
 /* ===== Todo List ===== */
-.todo-list {
+.todoList {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -328,7 +254,7 @@ body:has(.container.light) {
   gap: 8px;
 }
 
-.todo-list li {
+.todoList li {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -340,27 +266,27 @@ body:has(.container.light) {
   transition: all 0.3s ease;
 }
 
-.todo-list li:hover {
+.todoList li:hover {
   background: rgba(39, 39, 42, 0.15);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-.todo-list li input[type="checkbox"] {
+.todoList li input[type="checkbox"] {
   width: 20px;
   height: 20px;
   cursor: pointer;
   accent-color: var(--color-lime);
 }
 
-.todo-list li span {
+.todoList li span {
   flex: 1;
   font-size: 15px;
   letter-spacing: -0.01em;
   color: var(--color-text);
 }
 
-.todo-list li .delete-btn {
+.todoList li .deleteBtn {
   background: none;
   border: none;
   color: var(--color-text-dim);
@@ -371,33 +297,33 @@ body:has(.container.light) {
   padding: 4px 8px;
 }
 
-.todo-list li:hover .delete-btn {
+.todoList li:hover .deleteBtn {
   opacity: 1;
 }
 
-.todo-list li .delete-btn:hover {
+.todoList li .deleteBtn:hover {
   color: #EF4444;
   transform: scale(1.2);
 }
 
 /* Completed State */
-.todo-list li.completed {
+.todoList li.completed {
   opacity: 0.5;
 }
 
-.todo-list li.completed span {
+.todoList li.completed span {
   color: var(--color-text-muted);
   text-decoration: line-through;
   text-decoration-color: var(--color-text-dim);
 }
 
 /* ===== Empty State ===== */
-.empty-state {
+.emptyState {
   text-align: center;
   padding: 80px 24px;
 }
 
-.empty-state p {
+.emptyState p {
   font-size: 18px;
   color: var(--color-text-dim);
   letter-spacing: -0.01em;
@@ -416,7 +342,7 @@ body:has(.container.light) {
     font-size: 24px;
   }
 
-  .remaining-count .count {
+  .remainingCount .count {
     font-size: 32px;
   }
 
@@ -426,15 +352,15 @@ body:has(.container.light) {
     gap: 16px;
   }
 
-  .filter-controls {
+  .filterControls {
     justify-content: center;
   }
 
-  .action-buttons {
+  .actionButtons {
     justify-content: stretch;
   }
 
-  .action-btn {
+  .actionBtn {
     flex: 1;
   }
 }
